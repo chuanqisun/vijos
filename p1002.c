@@ -17,9 +17,13 @@ int main(int argc, char *argv[]){
 
 
     //init 
-    memset(stone_mark, 0, 9000);
-    memset(stone_loc, 0, 102);
-    memset(stone_count, 101, 9000);
+    for (i=0; i<9000; i++){
+        stone_mark[i]=0;
+        stone_count[i]=101;
+    }
+    for (i=0; i<102; i++){
+        stone_loc[i]=0;
+    } 
     stone_count[0]=0;
     shift=0;
 
