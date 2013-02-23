@@ -67,7 +67,7 @@ int main(int argc, char *argv[]){
 
 
 		window_stone[T]=0;
-		for (j=min_stone; j<M; j++){
+		for (j=0; j<M; j++){
 			if (stone[j]==cur+T+1){
 				window_stone[T]=1;
 				min_stone=j+1;
