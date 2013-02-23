@@ -21,7 +21,7 @@ int main(int argc, char *argv[]){
 	
 	//sort stones for better performance
 	for (i=0; i<M-1; i++){
-		for (j=i; j<M-1; j++){
+		for (j=0; j<M-1-i; j++){
 			if (stone[j]>stone[j+1]){
 				t=stone[j];
 				stone[j]=stone[j+1];
@@ -67,7 +67,7 @@ int main(int argc, char *argv[]){
 
 
 		window_stone[T]=0;
-		for (j=0; j<M; j++){
+		for (j=min_stone; j<M; j++){
 			if (stone[j]==cur+T+1){
 				window_stone[T]=1;
 				min_stone=j+1;
