@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
 
     //init 
     memset(stone_mark, 0, 9000);
-    memset(stone_loc, 0, 101);
+    memset(stone_loc, 0, 102);
     memset(stone_count, 101, 9000);
     stone_count[0]=0;
     shift=0;
@@ -34,11 +34,11 @@ int main(int argc, char *argv[]){
         stone_loc[m]=i;
 	}
     //treat ending point as a stone
-    stone[M+1]=L;
+    stone_loc[M+1]=L;
 	
 	//sort stones
-	for (i=1; i<M; i++){
-		for (j=1; j<M-i; j++){
+	for (i=0; i<=M; i++){
+		for (j=0; j<=M-i; j++){
 			if (stone_loc[j]>stone_loc[j+1]){
 				t=stone_loc[j];
 				stone_loc[j]=stone_loc[j+1];
@@ -47,7 +47,6 @@ int main(int argc, char *argv[]){
 		}
 	}	
     
-
     min_stone=0;
     //directly compute min stones
     if (S==T) {
