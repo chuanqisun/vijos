@@ -5,7 +5,7 @@
 int main(int argc, char *argv[]){
 
 	int L, S, T, M;
-    int stone_loc[101];
+    int stone_loc[102];
 	int stone_mark[9000];
     int stone_count[9000];
 	int m,i,j,step,t,shift,max_distance;
@@ -26,17 +26,19 @@ int main(int argc, char *argv[]){
 
 
     //compression length
-    //max_distance=S * (S-1) + T;
+    max_distance=S * (S-1) + T;
 
     //read in stone location
 	for (m=1; m<=M; m++){
 		scanf("%d",&i);
         stone_loc[m]=i;
 	}
+    //treat ending point as a stone
+    stone[M+1]=L;
 	
 	//sort stones
-	for (i=0; i<M; i++){
-		for (j=0; j<M-i; j++){
+	for (i=1; i<M; i++){
+		for (j=1; j<M-i; j++){
 			if (stone_loc[j]>stone_loc[j+1]){
 				t=stone_loc[j];
 				stone_loc[j]=stone_loc[j+1];
@@ -59,19 +61,20 @@ int main(int argc, char *argv[]){
     }
     
     //compress distance to a maximum of max_distance
-    for (i=1; i<=M; i++){
-        //shift=stone_loc[i]-stone_loc[i-1]-max_distance;
-        shift=-1;
+    for (i=1; i<=M+1; i++){
+        shift=stone_loc[i]-stone_loc[i-1]-max_distance;
         if (shift > 0) {
-            for (j=i; j<=M; j++){
+            for (j=i; j<=M+1; j++){
                 stone_loc[j]-=shift;
             }
         }
         stone_mark[stone_loc[i]]=1;
     }
     
-    //compress L according to last stone
-    //L=stone_loc[M]+max_distance;
+    //get L according to last stone
+    L = stone_loc[M+1];
+    stone_mark[L] = 0; 
+    
 
 	int cur;
 	
