@@ -47,4 +47,6 @@ int main(int argc, char *argv[]){
 	}
 
 	printf("%s\n%d\n%d", max_name, max_amount, total_amount);
+
+	return 0;
 }
